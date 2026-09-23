@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SantChes Studio — Presentes, brindes, personalizados e produtos 3D. Criatividade e personalização para transformar ideias em peças especiais.">
+  <meta name="theme-color" content="#0d3b5c">
+  <title>SantChes Studio | Presentes • Brindes • Personalizados 3D</title>
+  <link rel="icon" href="assets/logo-santches-studio.jpg">
+  <style>
+    :root{
+      --navy:#0c3b5d;
+      --blue:#087f9a;
+      --cyan:#16a9b8;
+      --orange:#f28a28;
+      --ink:#173042;
+      --muted:#667784;
+      --bg:#f7fafb;
+      --white:#fff;
+      --line:#e4edf1;
+      --shadow:0 18px 55px rgba(13,59,92,.10);
+      --radius:22px;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--white);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),92%);margin:auto}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(228,237,241,.9)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
+    .brand img{width:48px;height:48px;object-fit:cover;border-radius:10px}
+    .brand span{font-size:18px;letter-spacing:.2px}
+    nav{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:700;color:#405664}
+    nav a:hover{color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:13px 20px;font-weight:800;font-size:14px;transition:.2s ease;cursor:pointer;border:1px solid transparent}
+    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 9px 25px rgba(242,138,40,.25)}
+    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.03)}
+    .btn-outline{border-color:#cddde4;color:var(--navy);background:#fff}
+    .btn-outline:hover{border-color:var(--cyan);color:var(--blue)}
+    .menu{display:none;border:0;background:none;font-size:28px;color:var(--navy)}
+    .hero{background:linear-gradient(135deg,#f5fbfd 0%,#fff 60%,#fff7ef 100%);padding:78px 0 70px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--blue);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:18px}
+    .eyebrow:before{content:"";width:30px;height:3px;background:var(--orange);border-radius:10px}
+    h1{font-size:clamp(42px,5vw,68px);line-height:1.02;letter-spacing:-2.5px;margin:0 0 20px;color:var(--navy)}
+    h1 em{font-style:normal;color:var(--orange)}
+    .hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:var(--shadow)}
+    .hero-card:after{content:"";position:absolute;right:-35px;top:-35px;width:100px;height:100px;border-radius:50%;background:rgba(22,169,184,.10);z-index:0}
+    .logo-wrap{position:relative;z-index:1;border-radius:20px;background:#fff;padding:10px}
+    .logo-wrap img{width:100%;border-radius:14px}
+    .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .mini-stats div{padding:14px 10px;border-radius:16px;background:#f7fafb;text-align:center}
+    .mini-stats strong{display:block;color:var(--navy);font-size:16px}
+    .mini-stats span{font-size:11px;color:var(--muted)}
+    section{padding:86px 0}
+    .section-head{max-width:700px;margin-bottom:40px}
+    .section-kicker{font-size:12px;font-weight:900;color:var(--orange);letter-spacing:1.3px;text-transform:uppercase}
+    h2{font-size:clamp(31px,4vw,46px);line-height:1.1;letter-spacing:-1.3px;margin:8px 0 13px;color:var(--navy)}
+    .section-head p{color:var(--muted);margin:0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:start}
+    .about-copy p{font-size:17px;color:#536773}
+    .values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .value{padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 25px rgba(13,59,92,.05)}
+    .value .icon{font-size:24px;margin-bottom:7px}
+    .value h3{font-size:16px;margin:0 0 5px;color:var(--navy)}
+    .value p{font-size:13px;color:var(--muted);margin:0}
+    .products{background:var(--bg)}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s ease}
+    .product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .product .picon{font-size:34px}
+    .product h3{margin:12px 0 4px;font-size:18px;color:var(--navy)}
+    .product p{margin:0;color:var(--muted);font-size:13px}
+    .product .tag{display:inline-block;margin-top:15px;font-size:11px;font-weight:900;color:var(--blue);background:#eaf8fa;border-radius:999px;padding:5px 9px;align-self:flex-start}
+    .sales{padding-top:0;background:var(--bg)}
+    .sales-box{background:linear-gradient(135deg,var(--navy),#126782);color:#fff;border-radius:28px;padding:42px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;box-shadow:var(--shadow)}
+    .sales-box h2{color:#fff;margin-top:0}
+    .sales-box p{margin:0;color:rgba(255,255,255,.78);max-width:650px}
+    .sales-box .btn{white-space:nowrap}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .contact-card{border:1px solid var(--line);border-radius:22px;padding:28px}
+    .contact-card h3{margin:0 0 8px;color:var(--navy)}
+    .contact-card p{color:var(--muted);margin:0 0 20px}
+    .whatsapp{display:inline-flex;align-items:center;gap:10px;font-weight:900;color:#138b62}
+    footer{background:#092f49;color:#fff;padding:30px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    footer small{color:rgba(255,255,255,.65)}
+    .footer-brand{font-weight:900}
+    @media(max-width:900px){
+      nav{display:none}
+      .menu{display:block}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .product-grid{grid-template-columns:1fr 1fr}
+      .sales-box{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .nav{height:68px}
+      .brand img{width:42px;height:42px}
+      .hero{padding:52px 0}
+      section{padding:62px 0}
+      .product-grid,.values{grid-template-columns:1fr}
+      .sales-box{padding:30px 24px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+      .hero-card{padding:16px}
+    }
+  
+    .testimonials{background:#fff}
+    .testimonial-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px;align-items:start}
+    .testimonial-form{border:1px solid var(--line);border-radius:22px;padding:26px;background:#f8fbfc;position:sticky;top:96px}
+    .testimonial-form h3{margin:0 0 7px;color:var(--navy)}
+    .testimonial-form p{font-size:13px;color:var(--muted);margin:0 0 18px}
+    .field{margin-bottom:13px}
+    .field label{display:block;font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px}
+    .field input,.field textarea{width:100%;border:1px solid #d7e4e9;border-radius:12px;padding:12px 13px;font:inherit;font-size:14px;outline:none;background:#fff;color:var(--ink)}
+    .field textarea{min-height:105px;resize:vertical}
+    .field input:focus,.field textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(22,169,184,.10)}
+    .comment-list{display:grid;gap:13px}
+    .comment{border:1px solid var(--line);border-radius:18px;padding:19px 21px;background:#fff;box-shadow:0 7px 22px rgba(13,59,92,.045)}
+    .comment-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:7px}
+    .comment-name{font-weight:900;color:var(--navy)}
+    .comment-date{font-size:11px;color:#8a9aa3;white-space:nowrap}
+    .comment-text{margin:0;color:#536773;font-size:14px}
+    .empty-comments{border:1px dashed #cbdde3;border-radius:18px;padding:30px;text-align:center;color:var(--muted);background:#fbfdfe}
+    .testimonial-note{font-size:11px!important;color:#8a9aa3!important;margin-top:12px!important}
+    .success-msg{font-size:12px;color:#138b62;margin:10px 0 0;min-height:18px;font-weight:700}
+    @media(max-width:900px){
+      .testimonial-layout{grid-template-columns:1fr}
+      .testimonial-form{position:static}
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="SantChes Studio">
+      <img src="assets/logo-santches-studio.jpg" alt="Logo SantChes Studio">
+      <span>SANTCHES STUDIO</span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#quem-somos">Quem Somos</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#valores">Valores</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+      <a class="btn btn-primary" href="https://wa.me/5511932513558" target="_blank" rel="noopener">Pedir orçamento</a>
+    </nav>
+    <button class="menu" onclick="document.querySelector('nav').style.display = document.querySelector('nav').style.display==='flex'?'none':'flex'" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Criatividade que vira presente</div>
+        <h1>Ideias únicas para <em>momentos especiais.</em></h1>
+        <p>Presentes, brindes, lembrancinhas e personalizados 3D feitos para transformar uma ideia em uma peça com significado.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5511932513558" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+          <a class="btn btn-outline" href="#produtos">Ver possibilidades ↓</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="logo-wrap">
+          <img src="assets/logo-santches-studio.jpg" alt="SantChes Studio — Presentes, Brindes, Personalizados 3D">
+        </div>
+        <div class="mini-stats">
+          <div><strong>3D</strong><span>Criação personalizada</span></div>
+          <div><strong>Único</strong><span>Feito para você</span></div>
+          <div><strong>Especial</strong><span>Em cada detalhe</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quem-somos">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <div class="section-kicker">Quem Somos</div>
+        <h2>Do seu conceito para algo que você pode tocar.</h2>
+        <p>A SantChes Studio nasceu da paixão por criatividade, tecnologia e pela ideia de transformar momentos especiais em produtos únicos.</p>
+        <p>Criamos presentes, brindes, lembrancinhas e produtos personalizados, unindo design, impressão 3D e criatividade para transformar ideias em peças que tenham significado.</p>
+        <p>Cada projeto é pensado com atenção aos detalhes, buscando oferecer qualidade, originalidade e personalização em cada produto.</p>
+      </div>
+      <div id="valores">
+        <div class="section-kicker">Nossos Valores</div>
+        <div class="values">
+          <article class="value"><div class="icon">✨</div><h3>Criatividade</h3><p>Transformar ideias em produtos únicos e especiais.</p></article>
+          <article class="value"><div class="icon">🎨</div><h3>Personalização</h3><p>Cada cliente e cada ocasião merecem algo diferente.</p></article>
+          <article class="value"><div class="icon">⭐</div><h3>Qualidade</h3><p>Cuidado com materiais, acabamento e detalhes.</p></article>
+          <article class="value"><div class="icon">🤝</div><h3>Atendimento</h3><p>Entender o que você deseja e ajudar a transformar a ideia em realidade.</p></article>
+          <article class="value"><div class="icon">💡</div><h3>Inovação</h3><p>Utilizar tecnologia e impressão 3D para criar novas possibilidades e tendências.</p></article>
+          <article class="value"><div class="icon">❤️</div><h3>Feito com propósito</h3><p>Mais do que produtos, criar peças que façam parte de momentos especiais.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="produtos">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">O que fazemos</div>
+        <h2>Personalizados para presentear, divulgar e celebrar.</h2>
+        <p>Explore algumas das possibilidades da SantChes Studio. A criação pode ser adaptada ao seu evento, marca, presente ou ideia.</p>
+      </div>
+      <div class="product-grid">
+        <article class="product"><div><div class="picon">🎁</div><h3>Presentes personalizados</h3><p>Peças pensadas para surpreender e marcar momentos importantes.</p></div><span class="tag">FEITO SOB MEDIDA</span></article>
+        <article class="product"><div><div class="picon">🏷️</div><h3>Brindes para empresas</h3><p>Itens personalizados para ações, eventos, clientes e equipes.</p></div><span class="tag">SUA MARCA</span></article>
+        <article class="product"><div><div class="picon">🎉</div><h3>Lembrancinhas</h3><p>Detalhes especiais para aniversários, celebrações e ocasiões únicas.</p></div><span class="tag">EVENTOS</span></article>
+        <article class="product"><div><div class="picon">🧩</div><h3>Impressão 3D</h3><p>Criação de peças personalizadas com tecnologia e criatividade.</p></div><span class="tag">3D PERSONALIZADO</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sales">
+    <div class="container">
+      <div class="sales-box">
+        <div>
+          <div class="section-kicker" style="color:#ffb45e">Vamos criar?</div>
+          <h2>Tem uma ideia na cabeça?</h2>
+          <p>Conte o que você imaginou. Podemos conversar sobre personalização, quantidade, acabamento e transformar sua ideia em uma peça especial.</p>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/5511932513558" target="_blank" rel="noopener">Solicitar orçamento →</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Depoimentos</div>
+        <h2>O que nossos clientes acharam.</h2>
+        <p>Deixe um breve comentário sobre sua experiência com a SantChes Studio.</p>
+      </div>
+
+      <div class="testimonial-layout">
+        <div class="testimonial-form">
+          <h3>Deixe seu comentário</h3>
+          <p>Seu nome e sua mensagem serão exibidos junto com a data.</p>
+          <form id="testimonialForm">
+            <div class="field">
+              <label for="clientName">Seu nome</label>
+              <input id="clientName" name="clientName" maxlength="40" required placeholder="Como podemos identificar você?">
+            </div>
+            <div class="field">
+              <label for="clientComment">Comentário</label>
+              <textarea id="clientComment" name="clientComment" maxlength="280" required placeholder="Conte brevemente como foi sua experiência..."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Publicar comentário</button>
+            <div class="success-msg" id="testimonialMessage" aria-live="polite"></div>
+            <p class="testimonial-note">Serão exibidos no máximo os 7 comentários mais recentes neste navegador.</p>
+          </form>
+        </div>
+
+        <div>
+          <div class="comment-list" id="commentList" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Contato</div>
+        <h2>Vamos conversar sobre o seu projeto.</h2>
+        <p>Entre em contato para solicitar um orçamento ou conhecer nosso portfólio de produtos.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>WhatsApp</h3>
+          <p>Atendimento para orçamento, dúvidas e projetos personalizados.</p>
+          <a class="whatsapp" href="https://wa.me/5511932513558" target="_blank" rel="noopener">💬 (11) 93251-3558</a>
+        </div>
+        <div class="contact-card">
+          <h3>SantChes Studio</h3>
+          <p>Presentes • Brindes • Personalizados • 3D</p>
+          <a class="btn btn-primary" href="https://wa.me/5511932513558?text=Olá!%20Gostaria%20de%20conhecer%20o%20portfólio%20da%20SantChes%20Studio." target="_blank" rel="noopener">Quero conhecer o portfólio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">SANTCHES STUDIO</div>
+    <small>Presentes • Brindes • Personalizados • 3D</small>
+    <small>© 2026 SantChes Studio</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'santches_studio_depoimentos';
+  const form = document.getElementById('testimonialForm');
+  const list = document.getElementById('commentList');
+  const message = document.getElementById('testimonialMessage');
+
+  function getComments(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e) { return []; }
+  }
+
+  function saveComments(comments){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(comments.slice(0,7)));
+  }
+
+  function escapeHTML(value){
+    return String(value).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c];
+    });
+  }
+
+  function formatDate(iso){
+    const d = new Date(iso);
+    return d.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric'});
+  }
+
+  function render(){
+    const comments = getComments();
+    if(!comments.length){
+      list.innerHTML = '<div class="empty-comments">Ainda não há depoimentos. Seja o primeiro a deixar seu comentário! ✨</div>';
+      return;
+    }
+    list.innerHTML = comments.slice(0,7).map(c => `
+      <article class="comment">
+        <div class="comment-top">
+          <div class="comment-name">${escapeHTML(c.name)}</div>
+          <time class="comment-date">${formatDate(c.date)}</time>
+        </div>
+        <p class="comment-text">${escapeHTML(c.comment)}</p>
+      </article>
+    `).join('');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('clientName').value.trim();
+    const comment = document.getElementById('clientComment').value.trim();
+    if(!name || !comment) return;
+
+    const comments = getComments();
+    comments.unshift({name, comment, date:new Date().toISOString()});
+    saveComments(comments);
+    form.reset();
+    message.textContent = 'Comentário publicado com sucesso!';
+    render();
+    setTimeout(() => message.textContent = '', 3500);
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
